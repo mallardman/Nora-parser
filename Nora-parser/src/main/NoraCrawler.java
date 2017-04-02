@@ -16,7 +16,7 @@ public class NoraCrawler extends WebCrawler {
 		//lower case
 		String href = url.getURL().toLowerCase();
 		//if it is not an attachment and is a link to a page on versellie.com, parse it
-		return !FILTERS.matcher(href).matches() && href.startsWith("http://versellie.com/");
+		return !FILTERS.matcher(href).matches();// && href.startsWith("https://www.versellie.com/");
 	}
 
 /**

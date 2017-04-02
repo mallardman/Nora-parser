@@ -1,6 +1,8 @@
 package main;
+import java.util.AbstractCollection;
 import java.util.HashMap;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
@@ -11,6 +13,7 @@ import org.jsoup.select.Elements;
 public class NoraParser {
 	private String mainHTML;
 	private String url;
+	private StopWorder stopWordEntry = new StopWorder(); 
 	Document mainDoc = null;
 	HashMap<String,Integer> wordCount = 
 			new HashMap<String,Integer>();
@@ -21,10 +24,21 @@ public class NoraParser {
 	}
 	
 	public void parse(){
+		Vector<String> toBeRemoved = new Vector<String>();
 		recParse(mainDoc);
+		
+		//finds stop words.
 		for(String i:wordCount.keySet()){
-			//System.out.println(i + ": " + wordCount.get(i));
+			if(stopWordEntry.contains(i)){
+				toBeRemoved.add(i);
+			}
 		}
+		
+		//removes stop words
+		for(String i:toBeRemoved){
+			wordCount.remove(i);
+		}
+		
 		NoraIndexer.index(wordCount, url);
 	}
 	
