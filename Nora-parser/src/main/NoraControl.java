@@ -16,7 +16,7 @@ public class NoraControl {
 	        CrawlConfig config = new CrawlConfig();
 	        config.setCrawlStorageFolder(crawlStorageFolder);
 	        //The crawler will not exceed 2 sublevels of page crawling
-	        config.setMaxDepthOfCrawling(5);
+	        //config.setMaxDepthOfCrawling(5);
 	        //.3 second crawl delay on each outgoing link
 	        config.setPolitenessDelay(300);
 	        //set name of crawler to be displayed
@@ -34,7 +34,7 @@ public class NoraControl {
 	        CrawlController controller = new CrawlController(config, pageFetcher, robotstxtServer);
 
 	        //this is where the crawler will start add as many seeds as you want
-	        controller.addSeed("https://botw.org/");
+	        controller.addSeed("https://botw.org");
 	       
 	        
 	        controller.start(NoraCrawler.class, numberOfCrawlers);

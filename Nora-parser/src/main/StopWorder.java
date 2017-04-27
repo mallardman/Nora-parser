@@ -3,6 +3,9 @@ package main;
 import java.util.HashSet;
 
 public class StopWorder extends HashSet<String> {
+	//pretty much add every stop word to the set.
+	//4 year B.S. CS Tier Stuff
+	
 	public StopWorder(){
 		add("able");
 		add("add");

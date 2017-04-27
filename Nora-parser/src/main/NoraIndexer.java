@@ -54,6 +54,7 @@ public class NoraIndexer {
 		try{
 			Class.forName(driverType);
 			noraConn = DriverManager.getConnection(noraDB);	
+			noraConn.setAutoCommit(false);
 		}
 		
 		//Failure to connect prints stack trace	
@@ -206,6 +207,7 @@ public class NoraIndexer {
 			
 			
 		try{
+			noraConn.commit();
 			noraConn.close();
 		}
 			
